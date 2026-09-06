@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Choose a health check{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">20 models · one calm starting point</div>
+  <h1>Make sense of the signals your body is giving you.</h1>
+  <p class="hero-copy">
+    Choose a health check, enter the measurements you have, and get an instant
+    model-based screening result.
+  </p>
+  <div class="hero-note">
+    <span class="pulse-dot"></span> Educational screening only. Not a medical
+    diagnosis.
+  </div>
+</section>
+
+<section class="catalog" aria-labelledby="catalog-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Prediction library</p>
+      <h2 id="catalog-title">What would you like to explore?</h2>
+    </div>
+    <span class="count">{{ diseases|length }} checks</span>
+  </div>
+  <div class="disease-grid">
+    {% for disease in diseases %}
+    <a class="disease-card" href="{{ url_for('predict', slug=disease.slug) }}">
+      <div class="card-topline">
+        <span class="card-index">{{ '%02d'|format(loop.index) }}</span
+        ><span class="arrow">↗</span>
+      </div>
+      <div class="disease-mark mark-{{ loop.index % 5 }}">
+        {{ disease.name[0] }}
+      </div>
+      <h3>{{ disease.name }}</h3>
+      <p>{{ disease.description }}</p>
+      <div class="card-footer">
+        <span>{{ disease.category }}</span><span>Start check</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

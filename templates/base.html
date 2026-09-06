@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}VitalCheck{% endblock %} · VitalCheck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ url_for('home') }}"
+        ><span class="brand-mark">+</span
+        ><span>Vital<span class="brand-accent">Check</span></span></a
+      >
+      <nav>
+        <a href="{{ url_for('home') }}">All checks</a
+        ><span class="status"
+          ><span class="status-dot"></span>Local model system</span
+        >
+      </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <span>VitalCheck</span
+      ><span
+        >Private by design · Your inputs stay in this session. Created By Soumya
+        Mandal</span
+      >
+    </footer>
+  </body>
+</html>

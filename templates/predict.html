@@ -1,0 +1,138 @@
+{% extends "base.html" %} {% block title %}{{ disease.name }}{% endblock %} {%
+block content %}
+<section class="prediction-shell">
+  <a class="back-link" href="{{ url_for('home') }}">← Back to all checks</a>
+  <div class="prediction-layout">
+    <div class="prediction-intro">
+      <p class="eyebrow">{{ disease.category }} · model input</p>
+      <h1>{{ disease.name }}</h1>
+      <p>
+        {{ disease.description }} Enter the measurements below to run the
+        trained random forest model.
+      </p>
+      <div class="privacy-box">
+        <span class="lock-icon">⌁</span>
+        <div>
+          <strong>Private session</strong
+          ><span>Your values are sent only to this local Flask app.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <div class="panel-heading">
+        <div>
+          <span class="panel-kicker">01 / {{ features|length }}</span>
+          <h2>Patient profile</h2>
+        </div>
+        <span class="required-note">All fields required</span>
+      </div>
+      {% if error %}
+      <div class="alert error">{{ error }}</div>
+      {% endif %}
+      <form method="post">
+        <div class="field-grid">
+          {% for feature in features %}
+          <label class="field">
+            <span>{{ feature.label }} <small>({{ feature.name }})</small></span>
+            {% if feature.is_binary %}
+            <select name="{{ feature.name }}" required>
+              <option
+                value=""
+                {%
+                if
+                not
+                submitted_values.get(feature.name)
+                %}selected{%
+                endif
+                %}
+                disabled
+              >
+                Choose yes or no
+              </option>
+              <option
+                value="0"
+                {%
+                if
+                submitted_values.get(feature.name)
+                in
+                ['0']
+                %}selected{%
+                endif
+                %}
+              >
+                No / 0
+              </option>
+              <option
+                value="1"
+                {%
+                if
+                submitted_values.get(feature.name)
+                in
+                ['1']
+                %}selected{%
+                endif
+                %}
+              >
+                Yes / 1
+              </option>
+            </select>
+            {% else %}
+            <input
+              type="number"
+              name="{{ feature.name }}"
+              value="{{ submitted_values.get(feature.name, '') }}"
+              placeholder="Example: {{ feature.example }}"
+              min="{{ feature.min }}"
+              max="{{ feature.max }}"
+              step="{{ feature.step }}"
+              required
+            />
+            <em>Typical data range: {{ feature.min }} – {{ feature.max }}</em>
+            {% endif %}
+          </label>
+          {% endfor %}
+        </div>
+        <button class="submit-button" type="submit">
+          <span>Run prediction</span><span>→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  {% if prediction is not none %}
+  <section
+    class="result-panel {% if prediction == 1 %}result-risk{% else %}result-clear{% endif %}"
+    aria-live="polite"
+  >
+    <div class="result-icon">
+      {% if prediction == 1 %}!{% else %}✓{% endif %}
+    </div>
+    <div class="result-copy">
+      <p class="eyebrow">Model result</p>
+      <h2>
+        {% if prediction == 1 %}Potential indicators detected{% else %}No strong
+        indicators detected{% endif %}
+      </h2>
+      <p>
+        This screening model returned
+        <strong
+          >{% if prediction == 1 %}positive{% else %}negative{% endif %}</strong
+        >
+        for {{ disease.name }}.
+      </p>
+    </div>
+    {% if probability is not none %}
+    <div class="confidence">
+      <span>Positive probability</span><strong>{{ probability }}%</strong>
+    </div>
+    {% endif %}
+  </section>
+  <p class="result-disclaimer">
+    This result is an automated estimate from a machine-learning model, not a
+    diagnosis. Speak with a qualified healthcare professional for medical
+    advice.
+  </p>
+  {% endif %}
+</section>
+{% endblock %}

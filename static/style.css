@@ -1,0 +1,54 @@
+:root {
+  --ink: #172322;
+  --muted: #657370;
+  --paper: #f4f5ef;
+  --surface: #fffefa;
+  --line: #d9dfd8;
+  --teal: #0f766e;
+  --teal-dark: #0a544f;
+  --coral: #e87961;
+  --yellow: #f2c94c;
+  --shadow: 0 18px 45px rgba(23, 35, 34, .08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; }
+a { color: inherit; text-decoration: none; }
+.site-header, main, footer { max-width: 1240px; margin: auto; }
+.site-header { align-items: center; display: flex; justify-content: space-between; padding: 26px 32px; }
+.brand { align-items: center; display: flex; font-family: "Space Grotesk", sans-serif; font-size: 1.25rem; font-weight: 700; gap: 9px; }
+.brand-mark { align-items: center; background: var(--teal); border-radius: 50%; color: white; display: inline-flex; font-size: 1.3rem; height: 28px; justify-content: center; width: 28px; }
+.brand-accent { color: var(--teal); }
+nav { align-items: center; color: var(--muted); display: flex; font-size: .86rem; gap: 27px; }
+nav a { color: var(--ink); font-weight: 600; }
+.status, .hero-note { align-items: center; display: flex; gap: 8px; }
+.status-dot, .pulse-dot { background: #45ad7d; border-radius: 50%; display: inline-block; height: 7px; width: 7px; }
+main { padding: 0 32px 60px; }
+.hero { background: var(--teal); border-radius: 4px; color: white; min-height: 350px; overflow: hidden; padding: 63px clamp(28px, 8vw, 100px); position: relative; }
+.hero::after { border: 1px solid rgba(255,255,255,.17); border-radius: 50%; content: ""; height: 430px; position: absolute; right: -90px; top: -180px; width: 430px; }
+.eyebrow { color: var(--coral); font-size: .7rem; font-weight: 700; letter-spacing: .14em; margin: 0 0 14px; text-transform: uppercase; }
+.hero .eyebrow { color: #b7ded5; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 { font-family: "Space Grotesk", sans-serif; }
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -.03em; line-height: .98; margin-bottom: 23px; max-width: 720px; }
+.hero-copy { color: #d6eeea; font-size: 1.05rem; line-height: 1.65; max-width: 550px; }
+.hero-note { color: #b7ded5; font-size: .8rem; margin-top: 40px; }
+.catalog { padding-top: 68px; }
+.section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 26px; }
+.section-heading h2 { font-size: 2rem; letter-spacing: -.03em; margin-bottom: 0; }
+.count, .required-note { color: var(--muted); font-size: .78rem; }
+.disease-grid { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
+.disease-card { background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 240px; padding: 21px; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.disease-card:hover { border-color: var(--teal); box-shadow: var(--shadow); transform: translateY(-4px); }
+.card-topline, .card-footer { align-items: center; display: flex; justify-content: space-between; }
+.card-index, .card-footer { color: var(--muted); font-size: .71rem; letter-spacing: .08em; text-transform: uppercase; }
+.arrow { color: var(--teal); font-size: 1.2rem; }
+.disease-mark { align-items: center; border-radius: 50%; color: var(--ink); display: flex; font-family: "Space Grotesk", sans-serif; font-size: 1.2rem; font-weight: 700; height: 42px; justify-content: center; margin: 21px 0 17px; width: 42px; }
+.mark-0 { background: #d4ece5; }.mark-1 { background: #f6dfb8; }.mark-2 { background: #f4cfc8; }.mark-3 { background: #d8e2f0; }.mark-4 { background: #e5dcf2; }
+.disease-card h3 { font-size: 1.12rem; margin-bottom: 8px; }.disease-card p { color: var(--muted); font-size: .83rem; line-height: 1.5; margin-bottom: auto; }.card-footer { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 15px; }.card-footer span:last-child { color: var(--teal); font-weight: 700; letter-spacing: 0; text-transform: none; }
+footer { border-top: 1px solid var(--line); color: var(--muted); display: flex; font-size: .74rem; justify-content: space-between; margin-top: 10px; padding: 22px 32px 30px; } footer span:first-child { color: var(--ink); font-family: "Space Grotesk", sans-serif; font-weight: 700; }
+.prediction-shell { padding-top: 15px; }.back-link { color: var(--teal); display: inline-block; font-size: .8rem; font-weight: 700; margin: 15px 0 42px; }.prediction-layout { align-items: start; display: grid; gap: clamp(35px, 7vw, 100px); grid-template-columns: .75fr 1.25fr; }.prediction-intro h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); letter-spacing: -.05em; line-height: 1; margin-bottom: 22px; }.prediction-intro > p:not(.eyebrow) { color: var(--muted); line-height: 1.7; max-width: 420px; }.privacy-box { align-items: flex-start; background: #e4eee9; display: flex; gap: 13px; margin-top: 43px; max-width: 380px; padding: 16px; }.lock-icon { color: var(--teal); font-size: 1.5rem; }.privacy-box div { display: grid; gap: 3px; }.privacy-box span { color: var(--muted); font-size: .75rem; }.form-panel { background: var(--surface); border-top: 4px solid var(--teal); box-shadow: var(--shadow); padding: 29px; }.panel-heading { align-items: start; display: flex; justify-content: space-between; margin-bottom: 27px; }.panel-kicker { color: var(--coral); font-size: .7rem; font-weight: 700; letter-spacing: .1em; }.panel-heading h2 { font-size: 1.7rem; margin: 7px 0 0; }.field-grid { display: grid; gap: 19px; grid-template-columns: repeat(2, 1fr); }.field { display: grid; gap: 7px; }.field > span { font-size: .8rem; font-weight: 700; }.field small { color: var(--muted); font-size: .65rem; font-weight: 400; }.field input, .field select { background: #f8f9f5; border: 1px solid var(--line); border-radius: 0; color: var(--ink); font: inherit; font-size: .9rem; outline: none; padding: 12px; width: 100%; }.field input:focus, .field select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.11); }.field em { color: var(--muted); font-size: .66rem; font-style: normal; }.submit-button { align-items: center; background: var(--teal); border: 0; color: white; cursor: pointer; display: flex; font: inherit; font-weight: 700; justify-content: space-between; margin-top: 28px; padding: 16px 18px; width: 100%; }.submit-button:hover { background: var(--teal-dark); }.alert { background: #fff0ee; color: #a84336; font-size: .82rem; margin-bottom: 20px; padding: 12px; }.result-panel { align-items: center; display: flex; gap: 20px; margin: 55px 0 0; padding: 25px 28px; }.result-clear { background: #dceee5; }.result-risk { background: #f8dfd8; }.result-icon { align-items: center; border-radius: 50%; display: flex; font-size: 1.5rem; font-weight: 700; height: 48px; justify-content: center; width: 48px; }.result-clear .result-icon { background: #66b992; color: white; }.result-risk .result-icon { background: var(--coral); color: white; }.result-copy h2 { font-size: 1.45rem; margin-bottom: 5px; }.result-copy p:last-child { color: var(--muted); font-size: .85rem; margin: 0; }.confidence { border-left: 1px solid rgba(23,35,34,.2); display: grid; gap: 4px; margin-left: auto; padding-left: 28px; }.confidence span { color: var(--muted); font-size: .7rem; }.confidence strong { font-family: "Space Grotesk", sans-serif; font-size: 1.8rem; }.result-disclaimer { color: var(--muted); font-size: .72rem; margin: 13px 0 0; }
+@media (max-width: 900px) { .disease-grid { grid-template-columns: repeat(3, 1fr); }.prediction-layout { grid-template-columns: 1fr; }.prediction-intro > p:not(.eyebrow) { max-width: 600px; } }
+@media (max-width: 650px) { .site-header { padding: 20px; } nav a { display: none; } main { padding: 0 15px 45px; }.hero { min-height: 390px; padding: 45px 25px; }.hero h1 { font-size: 2.65rem; }.catalog { padding-top: 46px; }.section-heading { align-items: start; display: block; }.count { display: inline-block; margin-top: 12px; }.disease-grid { grid-template-columns: repeat(2, 1fr); }.disease-card { min-height: 250px; padding: 16px; }.disease-card h3 { font-size: 1rem; }.field-grid { grid-template-columns: 1fr; }.form-panel { padding: 21px; }.result-panel { align-items: flex-start; flex-wrap: wrap; padding: 20px; }.confidence { border-left: 0; margin-left: 0; padding-left: 68px; width: 100%; } footer { display: grid; gap: 10px; padding: 20px; } }
+@media (max-width: 390px) { .disease-grid { grid-template-columns: 1fr; }.disease-card { min-height: auto; }.prediction-intro h1 { font-size: 2.75rem; } }
